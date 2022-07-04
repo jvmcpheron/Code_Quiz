@@ -3,7 +3,7 @@ Timed code quiz using HTML CSS and JavaScript
 
 ## Getting Started
 
-You can view the project end product from this link: 
+You can view the project end product from this link: https://jvmcpheron.github.io/Code_Quiz/
 
 ## Authors
 
