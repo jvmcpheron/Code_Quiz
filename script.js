@@ -38,7 +38,7 @@ let id = 0;
 function iterate (id) {
   
     var result = document.getElementsByClassName('result');
-    result[0].innerText = "";
+
     const question = document.getElementById('question')
 
     question.innerText = Question[id].q;
@@ -76,8 +76,7 @@ function iterate (id) {
     next.onclick = () =>{
         console.log("id" + id);
         if (selected === "true") {
-            result[0].innerHTML = "True";
-            result[0].style.color = "green";
+             result[0].style.color = "green";
             points++
             selected = "";
             console.log("if")
@@ -85,7 +84,6 @@ function iterate (id) {
 
         } 
         else {
-             result[0].innerHTML = "False";
              result[0].style.color = "red";
             if (points > 0){points = points - 1;};
              selected = "";
@@ -96,7 +94,11 @@ function iterate (id) {
          } 
          console.log("points" + points);
          console.log("run time =" + runTime);
-         iterate(id);
+         if (id < 3){
+            iterate(id);
+         }else{
+             console.log("end");
+         }
 
         
     }
@@ -104,17 +106,43 @@ function iterate (id) {
 }
 
 
-
 let runTime = 0;
 
-
 const startBtn = document.getElementsByClassName("startBtn")[0];
-startBtn.addEventListener("click", () => {
-
 
 //timer code
+// startBtn.addEventListener("click", () => {
+//     let timer = document.getElementById("timer");
+//     let timeleft = 20;
+//     let downloadTimer = setInterval(function(){
+//         if(timeleft >= 0){
+//             timer.textContent = timeleft;
+//             console.log(timeleft);
+//             timeleft -= 1;
+//         } else{
+//             clearInterval(downloadTimer);
+//         }
+
+//         }, 1000);
+// })
+
+startBtn.onclick = () => {
+    let timer = document.getElementById("timer");
+    let timeleft = 20;
+    let downloadTimer = setInterval(function(){
+        if(timeleft >= 0){
+            timer.textContent = timeleft;
+            console.log(timeleft);
+            timeleft -= 1;
+        } else{
+            clearInterval(downloadTimer);
+        }
+
+        }, 1000);
+}
 
 
+startBtn.addEventListener("click", () => {
 //quiz run code
     points = 0;
     console.log("check 1");
