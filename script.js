@@ -32,10 +32,14 @@ const Question = [{
 
 const next = document.getElementsByClassName("next")[0];
 
+let username = "";
 let points = 0;
 let id = 0;
+let finalScore = 0;
+let lastHighScore = 0;
 
 function iterate (id) {
+
   
     var result = document.getElementsByClassName('result');
 
@@ -97,7 +101,26 @@ function iterate (id) {
          if (id < 3){
             iterate(id);
          }else{
+             finalScore = timeScore * points;
+             console.log("Score: " + finalScore);
              console.log("end");
+             username = prompt( "What is your username? \n (we need it to record your score)")
+             console.log(username);
+             if (localStorage.getItem('score') !== undefined){
+                lastHighScore = localStorage.getItem('score');
+                if (lastHighScore < finalScore){
+                    localStorage.setItem('username', username);
+                    localStorage.setItem('score', finalScore);
+                    alert("Game Over")
+                }
+             }else{
+ 
+                username = prompt("Congratulations, you have a new High Score! \n What is your username? \n (we need it to record your score)")
+                windows.localStorage.setItem('username', username);
+                window.localStorage.setItem('score', finalScore);
+    
+            }
+
          }
 
         
@@ -125,12 +148,17 @@ const startBtn = document.getElementsByClassName("startBtn")[0];
 
 //         }, 1000);
 // })
+let timeScore = 0;
 
 startBtn.onclick = () => {
     let timer = document.getElementById("timer");
     let timeleft = 20;
     let downloadTimer = setInterval(function(){
+        if (username != ""){
+            clearInterval(downloadTimer);
+        }
         if(timeleft >= 0){
+            timeScore = timeleft;
             timer.textContent = timeleft;
             console.log(timeleft);
             timeleft -= 1;
@@ -143,6 +171,7 @@ startBtn.onclick = () => {
 
 
 startBtn.addEventListener("click", () => {
+    username = "";
 //quiz run code
     points = 0;
     console.log("check 1");

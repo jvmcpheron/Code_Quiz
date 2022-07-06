@@ -5,7 +5,7 @@ body{
     height: 100vh;    
 }
 .panel{
-    height: 100vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,7 +64,7 @@ body{
 }
 .navigation{
     width: 80vw;
-    height: 10vh;
+
     margin: 20px;
     padding: 5px;
     display: flex;
@@ -90,4 +90,30 @@ body{
 .next{
     color: white;
     background-color: #ff5c5c;
+}
+
+.highscore a{
+    text-decoration:none;
+    color: black;
+}
+
+.highscore:hover a{
+    font-weight: bold;
+    color: blue;
+}
+
+.highscore-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#scores-container h1{
+    display: flex;
+    justify-content: center;
+}
+
+#highscores{
+    display: flex;
+    justify-content: center;
 }
